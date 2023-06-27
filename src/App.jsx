@@ -3,13 +3,14 @@ import axios from 'axios';
 
 function App() {
   const [data, setData] = useState(null);
+  const [selectedQ, setSelectedQ] = useState('adidas'); // Default value
 
   const fetchData = async () => {
     const options = {
       method: 'GET',
       url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
       params: {
-        q: 'adidas',
+        q: selectedQ,
         region: 'US'
       },
       headers: {
@@ -33,12 +34,26 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selectedQ]); // Fetch data when selectedQ changes
+
+  const handleSelectChange = (event) => {
+    setSelectedQ(event.target.value);
+  };
 
   return (
-    <div className="items-center bg-white justify-center text-center">
+    <div className="App">
+      <div>
+        <label htmlFor="selectQ">Select Q:</label>
+        <select id="selectQ" value={selectedQ} onChange={handleSelectChange}>
+          <option value="adidas">Adidas</option>
+          <option value="tesla">Tesla</option>
+          <option value="apple">Apple</option>
+          {/* Add more options as needed */}
+        </select>
+      </div>
+      
       {data ? (
-        <div className='mt-4'>
+        <div>
           {data.map((item) => (
             <div key={item.symbol}>
               <p>Symbol: {item.symbol}</p>
