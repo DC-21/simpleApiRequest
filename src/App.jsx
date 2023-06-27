@@ -41,14 +41,15 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="items-center h-screen justify-center text-center">
       <div>
         <label htmlFor="selectQ">Select Q:</label>
         <select id="selectQ" value={selectedQ} onChange={handleSelectChange}>
           <option value="adidas">Adidas</option>
           <option value="tesla">Tesla</option>
           <option value="apple">Apple</option>
-          {/* Add more options as needed */}
+          <option value="apple">Microsoft</option>
+          <option value="apple">Samsung</option>
         </select>
       </div>
       
