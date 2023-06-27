@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState(null);
-  const [selectedQ, setSelectedQ] = useState('adidas'); // Default value
+  const [selectedQ, setSelectedQ] = useState("adidas"); // Default value
 
   const fetchData = async () => {
     const options = {
-      method: 'GET',
-      url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
+      method: "GET",
+      url: "https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete",
       params: {
         q: selectedQ,
-        region: 'US'
+        region: "US",
       },
       headers: {
-        'X-RapidAPI-Key': '46e48277d1msh69f16805832974bp10d7b2jsn03c483dfb382',
-        'X-RapidAPI-Host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
-      }
+        "X-RapidAPI-Key": "46e48277d1msh69f16805832974bp10d7b2jsn03c483dfb382",
+        "X-RapidAPI-Host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+      },
     };
 
     try {
@@ -48,10 +48,14 @@ function App() {
           <option value="adidas">Adidas</option>
           <option value="tesla">Tesla</option>
           <option value="apple">Apple</option>
-          <option value="apple">Nike</option>
+          <option value="nike">Nike</option>
+          <option value="google">Google</option>
+          <option value="amazon">Amazon</option>
+          <option value="microsoft">Microsoft</option>
+          <option value="facebook">Facebook</option>
         </select>
       </div>
-      
+
       {data ? (
         <div>
           {data.map((item) => (
