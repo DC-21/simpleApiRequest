@@ -34,7 +34,11 @@ function App() {
   return (
     <div className="App">
       {data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <ul>
+          {data.map((item, index) => (
+            <li key={index}>{item.name}</li>
+          ))}
+        </ul>
       ) : (
         <p>Loading...</p>
       )}
