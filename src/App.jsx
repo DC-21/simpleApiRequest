@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import News from "./assets/components/News";
 
 function App() {
   const [data, setData] = useState(null);
@@ -34,7 +35,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, [selectedQ]); 
+  }, [selectedQ]);
 
   const handleSelectChange = (event) => {
     setSelectedQ(event.target.value);
@@ -42,7 +43,10 @@ function App() {
 
   return (
     <div className="items-center h-screen justify-center text-center">
-      <div>
+      <button className="bg-blue-100">
+        <News />
+      </button>
+      <div className="container">
         <label htmlFor="selectQ">Select Qoute:</label>
         <select id="selectQ" value={selectedQ} onChange={handleSelectChange}>
           <option value="adidas">Adidas</option>
@@ -64,7 +68,18 @@ function App() {
               <p>Shortname: {item.shortname}</p>
               <p>Exchange: {item.exchange}</p>
               <p>Quote Type: {item.quoteType}</p>
-              {/* Add more properties as needed */}
+              {item.news ? (
+                <div>
+                  <p>News:</p>
+                  <ul>
+                    {item.news.map((newsItem) => (
+                      <li key={newsItem.uuid}>{newsItem.title}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <p>No news available for this item.</p>
+              )}
             </div>
           ))}
         </div>
