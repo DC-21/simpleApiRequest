@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import News from "./assets/components/News";
 
 function App() {
   const [data, setData] = useState(null);
-  const [selectedQ, setSelectedQ] = useState("adidas"); // Default value
+  const [selectedQ, setSelectedQ] = useState("adidas"); 
 
   const fetchData = async () => {
     const options = {
@@ -44,7 +43,6 @@ function App() {
   return (
     <div className="items-center h-screen justify-center text-center">
       <button className="bg-blue-100">
-        <News />
       </button>
       <div className="container">
         <label htmlFor="selectQ">Select Qoute:</label>
