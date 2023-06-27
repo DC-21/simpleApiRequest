@@ -48,8 +48,7 @@ function App() {
           <option value="adidas">Adidas</option>
           <option value="tesla">Tesla</option>
           <option value="apple">Apple</option>
-          <option value="apple">Microsoft</option>
-          <option value="apple">Samsung</option>
+          <option value="apple">Nike</option>
         </select>
       </div>
       
