@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, [selectedQ]); // Fetch data when selectedQ changes
+  }, [selectedQ]); 
 
   const handleSelectChange = (event) => {
     setSelectedQ(event.target.value);
@@ -43,7 +43,7 @@ function App() {
   return (
     <div className="items-center h-screen justify-center text-center">
       <div>
-        <label htmlFor="selectQ">Select Q:</label>
+        <label htmlFor="selectQ">Select Qoute:</label>
         <select id="selectQ" value={selectedQ} onChange={handleSelectChange}>
           <option value="adidas">Adidas</option>
           <option value="tesla">Tesla</option>
@@ -57,9 +57,9 @@ function App() {
       </div>
 
       {data ? (
-        <div>
+        <div className="bg-blue-400 mt-4">
           {data.map((item) => (
-            <div key={item.symbol}>
+            <div key={item.symbol} className="pt-4">
               <p>Symbol: {item.symbol}</p>
               <p>Shortname: {item.shortname}</p>
               <p>Exchange: {item.exchange}</p>
