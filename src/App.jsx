@@ -21,7 +21,11 @@ function App() {
     try {
       const response = await axios.request(options);
       console.log(response.data);
-      setData(response.data);
+      if (response.data && Array.isArray(response.data.quotes)) {
+        setData(response.data.quotes);
+      } else {
+        setData([]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -32,13 +36,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="items-center bg-white justify-center text-center">
       {data ? (
-        <ul>
-          {data.map((item, index) => (
-            <li key={index}>{item.name}</li>
+        <div className='mt-4'>
+          {data.map((item) => (
+            <div key={item.symbol}>
+              <p>Symbol: {item.symbol}</p>
+              <p>Shortname: {item.shortname}</p>
+              <p>Exchange: {item.exchange}</p>
+              <p>Quote Type: {item.quoteType}</p>
+              {/* Add more properties as needed */}
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>Loading...</p>
       )}
